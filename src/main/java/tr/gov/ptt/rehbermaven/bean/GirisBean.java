@@ -10,6 +10,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import tr.gov.ptt.rehbermaven.entity.Giris;
 import tr.gov.ptt.rehbermaven.service.GirisService;
+import tr.gov.ptt.rehbermaven.util.JSPUtil;
 
 /**
  *
@@ -41,7 +42,12 @@ public class GirisBean {
         
         boolean sonuc = girisService.giriseYetkilimi(giris);
         
-        if(sonuc) return "menu.xhtml";
-        else return "giris.xhtml";
+        if(sonuc){
+            return "menu.xhtml";
+        }
+        else{
+            JSPUtil.hataGoster("Hatalı Giriş", "Kullanıcı veya Şifre yanlış");
+            return "giris.xhtml";
+        }
     }
 }
