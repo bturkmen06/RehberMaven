@@ -22,7 +22,6 @@ public class GirisService {
     
     public boolean giriseYetkilimi(Giris p_giris){
         
-        return girisFacade.girisKontrol(p_giris);
-        
+        return girisFacade.girisKontrol(p_giris);        
     }
 }
