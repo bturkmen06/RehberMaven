@@ -6,6 +6,8 @@
 package tr.gov.ptt.rehbermaven.bean;
 
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
 import tr.gov.ptt.rehbermaven.entity.Giris;
 import tr.gov.ptt.rehbermaven.service.GirisService;
 
@@ -13,6 +15,9 @@ import tr.gov.ptt.rehbermaven.service.GirisService;
  *
  * @author BEM
  */
+
+@ManagedBean
+@RequestScoped
 public class GirisBean {
     
     
