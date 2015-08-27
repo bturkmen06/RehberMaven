@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./anaTemplate.xhtml">
+
+            <ui:define name="content">
+                
+                <h:form>
+                    <p:dataTable id="listeTablo"
+                                 var="kisi" 
+                                 value="#{kisiBean.kisiListe}"
+                                 rows="3"
+                                 paginator="true"
+                                 rowsPerPageTemplate="5,10,15">
+                         
+                        <f:facet name="header">
+                            Kişi Listesi
+                        </f:facet>
+                       
+                        <p:column headerText="No">
+                            <p:outputLabel value="#{kisi.no}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Ad">
+                            <p:outputLabel value="#{kisi.ad}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Soyad">
+                            <p:outputLabel value="#{kisi.soyad}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Maaş">
+                            <p:outputLabel value="#{kisi.maas}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Doğum Tarihi">
+                            <p:outputLabel value="#{kisi.dogtar}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" timeZone="EET"/>
+                            </p:outputLabel>
+                        </p:column>
+                        
+                       
+                    </p:dataTable>
+                    
+                    <p:commandButton value="PDF" ajax="false">
+                         <p:dataExporter target="listeTablo" type="pdf" fileName="kisiler"/>
+                    </p:commandButton>
+                    
+                    <p:commandButton value="Excel" ajax="false">
+                         <p:dataExporter target="listeTablo" type="xls" fileName="kisiler"/>
+                    </p:commandButton>
+                   
+                </h:form>
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
